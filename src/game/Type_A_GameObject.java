@@ -5,10 +5,13 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class Type_A_GameObject extends GameObject {
+	boolean highlighted;
+	
 	public Type_A_GameObject(int x, int y) {
 		super(x, y);
-		setDirection(Direction.NONE);
+		setDirection(Direction.UP);
 		setVelocity(3);
+		highlighted = false;
 
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("images/Type_A_Up.png"));
@@ -27,12 +30,14 @@ public class Type_A_GameObject extends GameObject {
 			setY(getY() - getVelocity());
 			if (getY() < 0) {
 				setY(0);
+				setDirection(Direction.DOWN);
 			}
 			break;
 		case Direction.DOWN:
 			setY(getY() + getVelocity());
 			if (getY() + iconHeight > canvasHeight) {
 				setY((int) (canvasHeight - iconHeight));
+				setDirection(Direction.UP);
 			}
 			break;
 		default:

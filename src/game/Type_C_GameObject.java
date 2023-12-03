@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 public class Type_C_GameObject extends GameObject {
 	public Type_C_GameObject(int x, int y) {
 		super(x, y);
-		setDirection(Direction.NONE);
+		setDirection(Direction.RIGHT);
 		setVelocity(3);
 
 		imageList = new LinkedList<Icon>();
@@ -27,12 +27,14 @@ public class Type_C_GameObject extends GameObject {
 			setX(getX() + getVelocity());
 			if (getX() + iconWidth > canvasWidth) {
 				setX((int) (canvasWidth - iconWidth));
+				setDirection(Direction.RIGHT);
 			}
 			break;
 		case Direction.RIGHT:
 			setX(getX() - getVelocity());
 			if (getX() < 0) {
 				setX(0);
+				setDirection(Direction.LEFT);
 			}
 			break;
 		default:

@@ -10,7 +10,7 @@ public class Type_D_GameObject extends GameObject {
 	public Type_D_GameObject(int x, int y) {
 		super(x, y);
 		setDirection(Direction.NONE);
-		setVelocity(3);
+		setVelocity(5);
 
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("images/Type_D_Up.png"));
@@ -29,6 +29,8 @@ public class Type_D_GameObject extends GameObject {
 
 		// MOVE BLUE GAME OBJECT
 		switch (getDirection()) {
+		case Direction.NONE:
+			break;
 		case Direction.UP:
 			setY(getY() - getVelocity());
 			if (getY() < 0) {
@@ -56,6 +58,8 @@ public class Type_D_GameObject extends GameObject {
 		default:
 			break;
 		}
+		
+		setDirection(Direction.NONE);
 
 	}
 

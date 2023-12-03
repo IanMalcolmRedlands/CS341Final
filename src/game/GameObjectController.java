@@ -41,14 +41,14 @@ public class GameObjectController implements KeyListener {
 			objects[highlight].setDirection(Direction.LEFT);
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			objects[highlight].setDirection(Direction.RIGHT);
+		} else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			objects[highlight].setDirection(Direction.NONE);
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() != KeyEvent.VK_TAB) {
-			objects[highlight].setDirection(Direction.NONE);
-		} else {
+		if (e.getKeyCode() == KeyEvent.VK_TAB) {
 			highlight = (++highlight)%objects.length;
 		}
 	}

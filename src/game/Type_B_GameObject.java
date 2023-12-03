@@ -11,7 +11,11 @@ public class Type_B_GameObject {
 		this.x = x;
 		this.y = y;
 
-		direction = Direction.NONE;
+		direction = Direction.LEFT;
 		velocity = 3;
+	}
+	
+	public void rollDirection() {
+		direction = (int) (Math.random()*4) + 1;
 	}
 }

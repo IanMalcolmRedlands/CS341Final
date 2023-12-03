@@ -19,6 +19,8 @@ public class Type_B_GameObject_Adapter extends GameObject {
 		imageList.add(new ImageIcon("images/Type_B_Down.png"));
 		imageList.add(new ImageIcon("images/Type_B_Left.png"));
 		imageList.add(new ImageIcon("images/Type_B_Right.png"));
+		
+		setImage();
 	}
 
 	public void move(Canvas c) {
@@ -34,24 +36,28 @@ public class Type_B_GameObject_Adapter extends GameObject {
 			object.y = object.y - object.velocity;
 			if (object.y < 0) {
 				object.y = 0;
+				object.rollDirection();
 			}
 			break;
 		case Direction.DOWN:
 			object.y = object.y + object.velocity;
 			if (object.y + iconHeight > canvasHeight) {
 				object.y = (int) (canvasHeight - iconHeight);
+				object.rollDirection();
 			}
 			break;
 		case Direction.LEFT:
 			object.x = object.x + object.velocity;
 			if (object.x + iconWidth > canvasWidth) {
 				object.x = (int) (canvasWidth - iconWidth);
+				object.rollDirection();
 			}
 			break;
 		case Direction.RIGHT:
 			object.x = object.x - object.velocity;
 			if (object.x < 0) {
 				object.x = 0;
+				object.rollDirection();
 			}
 			break;
 		default:
@@ -61,6 +67,7 @@ public class Type_B_GameObject_Adapter extends GameObject {
 		setX(object.x);
 		setY(object.y);
 		setVelocity(object.velocity);
+		setImage();
 	}
 	
 	@Override
@@ -70,7 +77,7 @@ public class Type_B_GameObject_Adapter extends GameObject {
 	}
 
 	public void setImage() {
-		switch (getDirection()) {
+		switch (object.direction) {
 		case Direction.NONE:
 			break;
 		case Direction.UP:
