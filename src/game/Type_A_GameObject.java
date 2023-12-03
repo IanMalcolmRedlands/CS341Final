@@ -8,6 +8,7 @@ public class Type_A_GameObject extends GameObject {
 	public Type_A_GameObject(int x, int y) {
 		super(x, y);
 		setDirection(Direction.NONE);
+		setVelocity(3);
 
 		imageList = new LinkedList<Icon>();
 		imageList.add(new ImageIcon("images/Type_A_Up.png"));

@@ -18,14 +18,14 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 	private JFrame frame;
 	private Timer gameLoopTimer;
 	
-	private List<GameObject> gameObjectList;
-	private int highlighted = 0;
+	private GameObjectController objectController;
 	
 
 
 	public Canvas() {
 		// TASK 1: CREATE A LIST OF CHARACTERS THAT WILL APPEAR ON THE CANVAS
-		gameObjectList = new LinkedList<GameObject>();
+		objectController = new GameObjectController();
+		this.addKeyListener(objectController);
 
 		// TASK 2: CREATE A WINDOW FOR THE APPLICATION
 		frame = new JFrame("Animation Canvas");
@@ -44,21 +44,13 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 		frame.setVisible(true);
 
 	}
-	
-	/**
-	 * Adds GameObjects to the List, which are latter added to the Canvas
-	 */
-	public synchronized void addGameObject(GameObject sprite) {
-		gameObjectList.add(sprite);
-	}
+
 
 	/**
 	 * Draws the GameObject graphic onto the Canvas
 	 */
 	public synchronized void paint(Graphics g) {
-		for (GameObject s : gameObjectList) {
-			s.draw(this, g);
-		}
+		objectController.draw(this, g);
 	}
 	
 	
@@ -66,10 +58,7 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 	// Canvas must implement the inherited abstract method
 	// ActionListener.actionPerformed(ActionEvent)
 	public synchronized void actionPerformed(ActionEvent e) {
-		for (GameObject gameObject : gameObjectList) {
-			gameObject.move(this);
-			gameObject.setImage();
-		}
+		objectController.run(this);
 		repaint();
 	}
 
@@ -87,14 +76,7 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 	  }
 
 	  public void keyReleased(KeyEvent e) {
-	    if (e.getKeyCode() == KeyEvent.VK_TAB) {
-	      highlighted = highlighted + 1;
-	      if (highlighted == gameObjectList.size()) {
-	        highlighted = 0;
-	      }
-	    }
-	    GameObject s = gameObjectList.get(highlighted);
-	    s.setVelocity(s.getVelocity()+1);
+	    
 	  }
 
 }
