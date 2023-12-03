@@ -14,10 +14,9 @@ public class GameObjectController implements KeyListener {
 
 		objects = new GameObject[4];
 		objects[0] = new Type_A_GameObject(200, 200);
-		objects[1] = new Type_A_GameObject(250, 200);
-		objects[2] = new Type_C_GameObject(200, 250);
-		objects[3] = new Type_D_GameObject(250, 250);
-
+		objects[1] = new Type_B_GameObject_Adapter(400, 200);
+		objects[2] = new Type_C_GameObject(200, 400);
+		objects[3] = new Type_D_GameObject(400, 400);
 	}
 
 	public void run(Canvas c) {
