@@ -10,7 +10,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public class Canvas extends JComponent implements ActionListener, KeyListener {
+public class Canvas extends JComponent implements ActionListener {
 	// DEFAULT SERIAL NUMBER
 	private static final long serialVersionUID = 1L;
 
@@ -38,7 +38,6 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 		gameLoopTimer.start();
 		
 		setFocusTraversalKeysEnabled(false);
-	    addKeyListener(this);
 
 		// TASK 4: MAKE THE WINDOW VISIBLE
 		frame.setVisible(true);
@@ -61,22 +60,4 @@ public class Canvas extends JComponent implements ActionListener, KeyListener {
 		objectController.run(this);
 		repaint();
 	}
-
-
-	
-	
-	// ****************************************************
-	// Canvas must implement the inherited abstract methods
-	// for KeyListener
-	
-	  public void keyTyped(KeyEvent e) {
-	  }
-
-	  public void keyPressed(KeyEvent e) {
-	  }
-
-	  public void keyReleased(KeyEvent e) {
-	    
-	  }
-
 }

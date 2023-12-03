@@ -26,8 +26,16 @@ public class GameObjectController implements KeyListener {
 	}
 
 	public void draw(Component c, Graphics g) {
-		for (GameObject obj : objects) {
-			obj.draw(c, g);
+		for (int i=0; i<objects.length; i++) {
+			objects[i].draw(c, g);
+			if (i==highlight) {
+				
+				g.drawRect(
+					objects[i].getX(), objects[i].getY(),
+					objects[i].getCurrentImage().getIconWidth(),
+					objects[i].getCurrentImage().getIconWidth()
+				);
+			}
 		}
 	}
 
@@ -54,6 +62,5 @@ public class GameObjectController implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {
-	}
+	public void keyTyped(KeyEvent e) { return; }
 }

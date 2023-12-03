@@ -42,6 +42,13 @@ public class Type_C_GameObject extends GameObject {
 		}
 
 	}
+	
+	@Override
+	public void setDirection(int direction) {
+		if (direction==Direction.LEFT || direction==Direction.RIGHT || direction==Direction.NONE) {
+			super.setDirection(direction);
+		}
+	}
 
 	// SPECIFY THE IMAGE TO DISPLAY
 	// USED FOR ANIMATION
